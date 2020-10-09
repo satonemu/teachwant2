@@ -10,7 +10,7 @@
 
   <div class="field">
     <%= f.label :性別 %>
-    <%= f.select :sex, {'男性': 1, '女性': 2,'無回答': 3}, { include_blank: '選択してください'}, { class: 'form-control' , required: true } %>
+    <%= f.select :sex, User.sexes.keys , { include_blank: '選択してください'}, { class: 'form-control' , required: true } %>
   </div>
 
 
