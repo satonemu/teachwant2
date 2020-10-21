@@ -65,3 +65,6 @@ gem 'devise'
 
 # 論理削除
 gem 'paranoia'
+
+gem 'bootstrap-sass', '~> 3.3.6'
+gem 'jquery-rails'
