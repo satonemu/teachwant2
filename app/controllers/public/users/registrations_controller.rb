@@ -40,7 +40,7 @@ class Public::Users::RegistrationsController < Devise::RegistrationsController
 
   def after_sign_up_path_for(resource)
     root_path
-  end  
+  end
 
    protected
   # サインアップ時、devise初期設定に追加したカラムを記載
