@@ -1,12 +1,12 @@
 <div class="container">
 	<div class="row">
-		<h3>ジャンル一覧///追加</h3>
+		<h3>ジャンル一覧/追加</h3>
 		<% if flash[:success] %>
   			<p class="alert alert-success" role="alert"><%= flash[:success] %></p>
 		<% end %>
 			<%= form_for [:admin,@genre] do |f| %>
 				<% if @genre.errors.any? %>
-					<h4 class="message-error"><%= @genre.errors.count %> 件のエラーのため内容は保存できません。</h4>
+					<h4 class="message-error"><%= @genres.errors.count %> 件のエラーのため内容は保存できません。</h4>
 						<ul>
 							<% @genre.errors.full_messages.each do |message| %>
 								<li><%= message %></li>
