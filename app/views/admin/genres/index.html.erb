@@ -6,7 +6,7 @@
 		<% end %>
 			<%= form_for [:admin,@genre] do |f| %>
 				<% if @genre.errors.any? %>
-					<h4 class="message-error"><%= @genres.errors.count %> 件のエラーのため内容は保存できません。</h4>
+					<h4 class="message-error"><%= @genre.errors.count %> 件のエラーのため内容は保存できません。</h4>
 						<ul>
 							<% @genre.errors.full_messages.each do |message| %>
 								<li><%= message %></li>
@@ -26,6 +26,7 @@
 					<tr>
 						<td><%= genre.name %></td>
 						<td><%= link_to "編集", edit_admin_genre_path(genre.id) %></td>
+						<td><%= link_to "削除", admin_genre_path(genre.id), method: :delete,  "data-confirm" => "本当に削除しますか？" %></td>
 					</tr>
 				<% end %>
 			</tbody>
