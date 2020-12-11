@@ -1,0 +1,35 @@
+<div class="container">
+	<div class="row">
+		<h3>項目一覧/追加</h3>
+		<% if flash[:success] %>
+  			<p class="alert alert-success" role="alert"><%= flash[:success] %></p>
+		<% end %>
+			<%= form_for [:admin,@item] do |f| %>
+				<% if @item.errors.any? %>
+					<h4 class="message-error"><%= @item.errors.count %> 件のエラーのため内容は保存できません。</h4>
+						<ul>
+							<% @item.errors.full_messages.each do |message| %>
+								<li><%= message %></li>
+							<% end %>
+						</ul>
+				<% end %>
+				<%= f.label :項目 %>
+				<%= f.text_field :name %>
+				<%= f.submit '追加', class: "btn btn-primary"%>
+			<% end %>
+		<table class="table table-striped">
+			<thead>
+				<th>項目</th>
+			</thead>
+			<tbody>
+				<% @items.each do |item| %>
+					<tr>
+						<td><%= item.name %></td>
+						<td><%= link_to "編集", edit_admin_item_path(item.id) %></td>
+						<td><%= link_to "削除", admin_item_path(item.id), method: :delete,  "data-confirm" => "本当に削除しますか？" %></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+</div>
