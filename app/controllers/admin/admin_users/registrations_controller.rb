@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Admin::AdminUsers::RegistrationsController < Devise::RegistrationsController
+
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
@@ -28,6 +29,9 @@ class Admin::AdminUsers::RegistrationsController < Devise::RegistrationsControll
   # def destroy
   #   super
   # end
+  def after_sign_up_path_for(resource)
+    admin_genres_path
+  end
 
   # GET /resource/cancel
   # Forces the session data which is usually expired after sign
@@ -38,8 +42,10 @@ class Admin::AdminUsers::RegistrationsController < Devise::RegistrationsControll
   #   super
   # end
 
-  # protected
-
+  protected
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:email])
+  end
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
   #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
