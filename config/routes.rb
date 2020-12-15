@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  namespace :public do
+    get 'posts/index'
+  end
   namespace :admin do
       devise_for :admin_users, controllers: {
       sessions: 'admin/admin_users/sessions',
@@ -23,6 +26,7 @@ Rails.application.routes.draw do
 
   namespace :public do
   	resources :users, only: [:index, :show, :edit, :update]
+    resources :posts, only: [:index, :show, :edit, :update]
   end
 
   root 'public/users#show'
