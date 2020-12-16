@@ -25,7 +25,7 @@
                   ようこそ、<%= current_user.name %>さん!
                 </li>
                 <li>
-                  <%= link_to "投稿ページ" %>
+                  <%= link_to "投稿ページ",public_posts_index_path %>
                 </li>
                 <li>
                   <%= link_to "マイページ", public_user_path(current_user) %>
